@@ -73,33 +73,6 @@ describe('triangleTypeDetect', () => {
     );
   });
 
-  it('should reject with NOT_INTEGER if one/all of the sides is/are not an integer', () => {
-    triangleTypeDetecor(1.5, 2.4, 14.3).catch(err =>
-      expect(err).toEqual(
-        createTriangleTypeError(
-          ERROR_CODES.NOT_INTEGER,
-          'triangleDetector requires all 3 parameters to be an integer'
-        )
-      )
-    );
-    triangleTypeDetecor(1.5, 2.4, 14).catch(err =>
-      expect(err).toEqual(
-        createTriangleTypeError(
-          ERROR_CODES.NOT_INTEGER,
-          'triangleDetector requires all 3 parameters to be an integer'
-        )
-      )
-    );
-    triangleTypeDetecor(1.5, 2, 14).catch(err =>
-      expect(err).toEqual(
-        createTriangleTypeError(
-          ERROR_CODES.NOT_INTEGER,
-          'triangleDetector requires all 3 parameters to be an integer'
-        )
-      )
-    );
-  });
-
   it('should resolve with Invalid when size values are impossible to shape a triangle due to geometry rule', () => {
     /*
       - Rule: a+b>c && a+c>b && b+c>a
@@ -116,7 +89,7 @@ describe('triangleTypeDetect', () => {
     );
   });
 
-  it('should pass if all sides are valid positive integer numbers', () => {
+  it('should pass if all sides are valid positive numbers', () => {
     triangleTypeDetecor(3, 4, 5).then(type =>
       expect(type).toEqual(TRIANGLE_TYPES.scalene)
     );

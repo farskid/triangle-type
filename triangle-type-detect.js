@@ -1,9 +1,9 @@
 const Set = require('es6-set');
 const { ERROR_CODES, TRIANGLE_TYPES } = require('./constants');
 const { createTriangleTypeError } = require('./utils/error-factory');
-const { isInteger } = require('./utils/is-integer');
 const { isNumber } = require('./utils/is-number');
 const { isPositive } = require('./utils/is-positive');
+const { sumOfArray } = require('./utils/array-sum');
 
 module.exports.triangleTypeDetecor = function triangleTypeDetecor(
   side1,
@@ -12,6 +12,10 @@ module.exports.triangleTypeDetecor = function triangleTypeDetecor(
 ) {
   // Array of sides, operations on arrays are much easier than to deal with sides separately
   const sidesArray = [side1, side2, side3];
+
+  // Sort sides lengths from small to large
+  // NOTE: since `sort` is mutable, I'm using slice to create a clone of it
+  const sortedSidesArray = sidesArray.slice().sort();
 
   // Array of types of sides array
   const sidesTypesArray = sidesArray.map(side => typeof side);
@@ -46,29 +50,19 @@ module.exports.triangleTypeDetecor = function triangleTypeDetecor(
       );
     }
 
-    // Validate all of the parameters are integer
-    if (sidesArray.filter(side => !isInteger(side)).length > 0) {
-      return reject(
-        createTriangleTypeError(
-          ERROR_CODES.NOT_INTEGER,
-          'triangleDetector requires all 3 parameters to be an integer'
-        )
-      );
-    }
-
     /*
       Check for Geometry rule for the possibility of shaping a triangle with 3 valid values.
       As geometry states:
       - given 3 valid values a,b,c
       - a+b>c && a+c>b && b+c>b should be true otherwise it's impposible to shape a triangle with these 3 values
-      - *** Making it dynamic would require to create a hashMap from array and do math operations on it's items one-by-one which is an overkill for this scenario. Triangle sides are fixed in number and type ***.
+      - *** Note: instead of imperatively checking for all 3 sums, we can make sure, if the maximum value of sides is less that the sum of other two, then it can form a valid triangle ***.
     */
 
-    if (
-      side1 + side2 <= side3 ||
-      side1 + side3 <= side2 ||
-      side2 + side3 <= side1
-    ) {
+    // Since sortedSidesArray is sorted, the max side is the last element.
+    // I use `slice`, because I love immutable data structures and really frightened of unintended mutable operatios.
+    const max = sortedSidesArray.slice(-1);
+
+    if (max >= sumOfArray(sortedSidesArray.slice(0, -1))) {
       return resolve(TRIANGLE_TYPES.invalid);
     }
 

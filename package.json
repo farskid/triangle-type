@@ -1,5 +1,5 @@
 {
-  "name": "triangle-type",
+  "name": "@farskid/triangle-type",
   "version": "0.1.0",
   "description":
     "A program to detect type of a triangle by providing all three sides lengths",

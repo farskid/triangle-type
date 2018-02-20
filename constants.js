@@ -1,7 +1,6 @@
 // Error codes for triangle inputs
 module.exports.ERROR_CODES = {
   NOT_NUMBER: 'NOT_NUMBER',
-  NOT_INTEGER: 'NOT_INTEGER',
   NOT_POSITIVE: 'NOT_POSITIVE'
 };
 

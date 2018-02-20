@@ -1,9 +1,9 @@
-const Set = require("es6-set");
-const { ERROR_CODES, TRIANGLE_TYPES } = require("./constants");
-const { createTriangleTypeError } = require("./utils/error-factory");
-const { isInteger } = require("./utils/is-integer");
-const { isNumber } = require("./utils/is-number");
-const { isPositive } = require("./utils/is-positive");
+const Set = require('es6-set');
+const { ERROR_CODES, TRIANGLE_TYPES } = require('./constants');
+const { createTriangleTypeError } = require('./utils/error-factory');
+const { isInteger } = require('./utils/is-integer');
+const { isNumber } = require('./utils/is-number');
+const { isPositive } = require('./utils/is-positive');
 
 module.exports.triangleTypeDetecor = function triangleTypeDetecor(
   side1,
@@ -29,8 +29,9 @@ module.exports.triangleTypeDetecor = function triangleTypeDetecor(
       return reject(
         createTriangleTypeError(
           ERROR_CODES.NOT_NUMBER,
-          "triangleDetector requires all 3 parameters to be of type number, instead got: " +
-            sidesTypesArray.join(" , ")
+          `triangleDetector requires all 3 parameters to be of type number, instead got: ${sidesTypesArray.join(
+            ' , '
+          )}`
         )
       );
     }
@@ -40,7 +41,7 @@ module.exports.triangleTypeDetecor = function triangleTypeDetecor(
       return reject(
         createTriangleTypeError(
           ERROR_CODES.NOT_POSITIVE,
-          "triangleDetector requires all 3 parameters to be a positive number"
+          'triangleDetector requires all 3 parameters to be a positive number'
         )
       );
     }
@@ -50,7 +51,7 @@ module.exports.triangleTypeDetecor = function triangleTypeDetecor(
       return reject(
         createTriangleTypeError(
           ERROR_CODES.NOT_INTEGER,
-          "triangleDetector requires all 3 parameters to be an integer"
+          'triangleDetector requires all 3 parameters to be an integer'
         )
       );
     }

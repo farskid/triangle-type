@@ -1,0 +1,10 @@
+{
+  "extends": "eslint-config-airbnb-base",
+  "plugins": ["eslint-plugin-import", "prettier"],
+  "rules": {
+    "no-restricted-globals": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "max-len": "off"
+  }
+}

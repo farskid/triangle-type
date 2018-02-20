@@ -1,18 +1,26 @@
 {
   "name": "triangle-type",
   "version": "0.1.0",
-  "description": "A program to detect type of a triangle by providing all three sides lengths",
+  "description":
+    "A program to detect type of a triangle by providing all three sides lengths",
   "main": "index.js",
   "repository": "https://github.com/farskid/triangle-type.git",
   "author": "Farzad YZ <farskid@gmail.com>",
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "jest": "^22.3.0"
+    "eslint": "^4.18.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "jest": "^22.3.0",
+    "prettier": "^1.10.2"
   },
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "lint": "eslint . --fix",
+    "format": "prettier --write \"./**/*.{js,md}\""
   },
   "jest": {
     "verbose": true

@@ -1,4 +1,3 @@
-
 /**
  * @function isNumber
  * @description Detects if the input is of type number
@@ -11,5 +10,5 @@
  *  isNumber('hello world') false
  */
 module.exports.isNumber = function isNumber(num) {
-	return typeof num === 'number' && isFinite(num) && !isNaN(num);
-}
+  return typeof num === 'number' && isFinite(num) && !isNaN(num);
+};

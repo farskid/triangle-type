@@ -1,9 +1,9 @@
-const { isNumber } = require("./is-number");
+const { isNumber } = require('./is-number');
 
 /**
  * @function isInteger
  * @description Detects if the input is an integer
- * @param {*} num 
+ * @param {*} num
  * @returns true if the input is an integer, false otherwise
  * @example
  *  isInteger(2.3) false
@@ -15,4 +15,4 @@ const { isNumber } = require("./is-number");
  */
 module.exports.isInteger = function isInteger(num) {
   return isNumber(num) && Math.floor(num) === num;
-}
+};

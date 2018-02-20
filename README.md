@@ -1,17 +1,17 @@
 # Triangle Type Detector
 
-A javascript module to detect type of a triabgle based on given 3 values as triangle's side lengths.
+A Javascript module to detect type of a triangle based on 3 given values as triangle's side lengths.
 
 ---
 
 ## Usage
 
-* Install via npm: `npm install @farskid/triangle-type` or Yarn: `yarn add @farskid/triangle-type`.
+* Install via NPM: `npm install @farskid/triangle-type` or Yarn: `yarn add @farskid/triangle-type`.
 
 * Import into your own project:
 
   * ES modules: `import triangleTypeDetecor from '@farskid/triangle-type'`.
-  * commonjs: `const triangleTypeDetecor = require('@farskid/triangle-type')`
+  * Commonjs: `const triangleTypeDetecor = require('@farskid/triangle-type')`
 
 ```js
 import triangleTypeDetecor from '@farskid/triangle-type';
@@ -54,7 +54,7 @@ Also they should obey a rule as:
 * a + c > b
 * b + c > a
 
-> We won't need to check for all of the 3 comparison. Instead, if the maximum value of sides lengths is les than the sum of all the other two, all comparions is true implicitly. Simple Math, Lol.
+> We won't need to check for all of the 3 comparisons. Instead, if the maximum value of sides lengths is less than the sum of all the other two, all comparisons are true implicitly. Simple Math, Lol.
 
 So basically, I'm checking `longest_side < sum_of_all_sides_except_longest_side`.
 
@@ -62,17 +62,17 @@ So basically, I'm checking `longest_side < sum_of_all_sides_except_longest_side`
 
 ### Technical decisions
 
-**Pure functions**: In order to follow the rule of **separation of concern**, I've used pure functions as utilities to help me with reusable logics. Utilities are listed as: is-positive, is-number to validate side length inputs and array-sum to calculate the sum of items in an array.
+**Pure functions**: In order to follow the rule of **separation of concerns**, I've used pure functions as utilities to help me with reusable logics. Utilities are listed as: is-positive, is-number to validate side length inputs and array-sum to calculate the sum of items in an array.
 
-**Error handling**: To come up with a solid API for the module and ease the error handling process for the consumers, I decided to implement the module in a way to return a promise. Using promises, One can easily use `.then` to grab the type value and `.catch` to catch exceptions. Pomises are built-in to the language and provide a handful collection of methods for concurrency, composability and sequential execution. They're also async instictly, so there would be no I/O blocking in this module.
+**Error handling**: To come up with a solid API for the module and ease the error handling process for the consumers, I decided to implement the module in a way to return a promise. Using promises, One can easily use `.then` to grab the type value and `.catch` to catch exceptions. Pomises are built-in to the language and provide a handful collection of methods for concurrency, composability and sequential execution. They're also async instinctly, so there would be no I/O blocking in this module.
 
-To have a robust error object, I've created a fatcory function as a utility `error-factory.js` to create error object. It extends the built-in _Error_ object using prototyipal inheritance and provides `code` and `message` property for further details.
+To have a robust error object, I've created a fatcory function as a utility `error-factory.js` to create error object. It extends the built-in _Error_ object using prototypal inheritance and provides `code` and `message` property for further details.
 
 **Constants**: All the constants used by the module, including _Triangle types_ and _Error codes_ are stored in this file.
 
-**index.js**: This the main entry of the module that consumers can import the logic from. for more detials, see the **Usage** section above.
+**index.js**: This is the main entry of the module that consumers can import the logic from. for more detials, see the **Usage** section above.
 
-**triangle-type-detect**: This is the core logic of the module. it runs a couple of validations to make sure all 3 inputs are number and positive. It also runs a validation check to ensure the geometry rule discussed in the **validation** section above.
+**triangle-type-detect**: This is the core logic of the module. it runs a couple of validations to make sure all 3 inputs are numbers and positive. It also runs a validation check to ensure the geometry rule discussed in the **validation** section above.
 
 **Formatting**: I'm using prettier to format all `.js` and `.md` files based on a certain config.
 

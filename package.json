@@ -1,0 +1,23 @@
+{
+  "name": "triangle-type",
+  "version": "0.1.0",
+  "description": "A program to detect type of a triangle by providing all three sides lengths",
+  "main": "index.js",
+  "repository": "https://github.com/farskid/triangle-type.git",
+  "author": "Farzad YZ <farskid@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "jest": "^22.3.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "verbose": true
+  },
+  "dependencies": {
+    "es6-set": "^0.1.5"
+  }
+}
